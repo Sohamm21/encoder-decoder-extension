@@ -14,18 +14,6 @@ const Footer = ({ value, setValue, showJsonFormat }) => {
     setFormat(e.target.value);
   };
 
-  const textToHex = () => {
-    return Array.from(value)
-      .map((ch) => ch.charCodeAt(0).toString(16).padStart(2, "0"))
-      .join("");
-  };
-
-  const hexToText = () => {
-    return Array.from(value)
-      .map((ch) => String.fromCharCode(parseInt(ch, 16)))
-      .join("");
-  };
-
   const handleRun = () => {
     if (!value) {
       return;
@@ -34,9 +22,6 @@ const Footer = ({ value, setValue, showJsonFormat }) => {
       switch (format) {
         case "base64":
           setValue(btoa(value));
-          break;
-        case "hex":
-          setValue(textToHex());
           break;
         case "url":
           setValue(encodeURIComponent(value));
@@ -48,9 +33,6 @@ const Footer = ({ value, setValue, showJsonFormat }) => {
       switch (format) {
         case "base64":
           setValue(atob(value));
-          break;
-        case "hex":
-          setValue(hexToText());
           break;
         case "url":
           setValue(decodeURIComponent(value));
@@ -76,7 +58,6 @@ const Footer = ({ value, setValue, showJsonFormat }) => {
             <span>Format</span>
             <select onChange={handleFormatChange} className="dropdown">
               <option value="base64">Base64</option>
-              <option value="hex">Hex</option>
               <option value="url">URL</option>
             </select>
           </div>
