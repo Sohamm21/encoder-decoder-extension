@@ -7,5 +7,5 @@
     "default_popup": "index.html",
     "default_title": "Encoder Decoder"
   },
-  "permissions": ["clipboardRead", "storage", "activeTab"]
+  "permissions": ["clipboardRead", "storage", "activeTab", "clipboardWrite"]
 }

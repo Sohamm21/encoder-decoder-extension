@@ -5,6 +5,9 @@
   padding: 10px;
   background: linear-gradient(90deg, #29135c 0%, #132146 48%);
   border-bottom: 1px solid #80808080;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 100vw;
 }
 
 .header-text {
@@ -21,6 +24,26 @@
 
 .body {
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+.body-header-button {
+  padding: 7px;
+  background: linear-gradient(90deg, #29135c 0%, #132146 48%);
+  border: 1px solid #80808080;
+  border-radius: 10px;
+}
+
+.body-header-button.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.body-header-button:focus {
+  outline: none;
 }
 
 .body-input-editor {
@@ -28,4 +51,118 @@
   background-color: #132146;
   border: 1px solid #80808080;
   border-radius: 10px;
+}
+
+.body-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 35px;
+}
+
+.footer {
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-buttons {
+  gap: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-button {
+  padding: 10px;
+  background: linear-gradient(90deg, #29135c 0%, #132146 48%);
+  border: 1px solid #80808080;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.footer-button.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.footer-button:focus {
+  outline: none;
+}
+
+.operation-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.body-input-textarea {
+  width: 100%;
+  resize: none;
+  height: 250px;
+  box-sizing: border-box;
+  display: block;
+  padding: 5px;
+  background-color: #282c35;
+}
+
+.body-input-textarea:focus {
+  outline: none;
+}
+
+.body-header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.json-editor {
+  border: 1px solid #80808080;
+  width: 100%;
+}
+
+.dropdown {
+  padding: 10px;
+  border: 1px solid #80808080;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #29135c 0%, #132146 48%);
+  width: 200px;
+}
+
+.dropdown:focus {
+  outline: none;
+}
+
+.dropdown option {
+  background-color: #29135c;
+}
+
+.footer-hr {
+  border: 1px solid #80808080;
+}
+
+.copy-clear-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.copy-clear-button {
+  padding: 10px;
+  background: linear-gradient(90deg, #29135c 0%, #132146 48%);
+  border: 1px solid #80808080;
+  border-radius: 10px;
+}
+
+.copy-clear-button:focus {
+  outline: none;
+}
+
+.copy-clear-button.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }

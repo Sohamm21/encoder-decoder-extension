@@ -10,8 +10,8 @@ const Header = () => {
         loading="lazy"
       />
       <div className="header-text">
-        <span>Encoder-Decoder Transformer</span>
-        <span>Developer Utility Tool</span>
+        <span>Encoder Decoder Transformer</span>
+        <span>Utility Tool</span>
       </div>
     </div>
   );

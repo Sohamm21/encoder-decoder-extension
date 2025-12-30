@@ -1,7 +1,134 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Footer = () => {
-  return <div>Footer</div>;
+import "./index.css";
+
+const Footer = ({ value, setValue, showJsonFormat }) => {
+  const [operation, setOperation] = useState("encode");
+  const [format, setFormat] = useState("base64");
+
+  const handleOperationChange = (e) => {
+    setOperation(e.target.value);
+  };
+
+  const handleFormatChange = (e) => {
+    setFormat(e.target.value);
+  };
+
+  const textToHex = () => {
+    return Array.from(value)
+      .map((ch) => ch.charCodeAt(0).toString(16).padStart(2, "0"))
+      .join("");
+  };
+
+  const hexToText = () => {
+    return Array.from(value)
+      .map((ch) => String.fromCharCode(parseInt(ch, 16)))
+      .join("");
+  };
+
+  const handleRun = () => {
+    if (!value) {
+      return;
+    }
+    if (operation === "encode") {
+      switch (format) {
+        case "base64":
+          setValue(btoa(value));
+          break;
+        case "hex":
+          setValue(textToHex());
+          break;
+        case "url":
+          setValue(encodeURIComponent(value));
+          break;
+        default:
+          break;
+      }
+    } else {
+      switch (format) {
+        case "base64":
+          setValue(atob(value));
+          break;
+        case "hex":
+          setValue(hexToText());
+          break;
+        case "url":
+          setValue(decodeURIComponent(value));
+          break;
+        default:
+          break;
+      }
+    }
+  };
+
+  const renderOperationButtons = () => {
+    return (
+      <div className="footer">
+        <div className="footer-buttons">
+          <div className="operation-container">
+            <span>Operation</span>
+            <select onChange={handleOperationChange} className="dropdown">
+              <option value="encode">Encode</option>
+              <option value="decode">Decode</option>
+            </select>
+          </div>
+          <div className="operation-container">
+            <span>Format</span>
+            <select onChange={handleFormatChange} className="dropdown">
+              <option value="base64">Base64</option>
+              <option value="hex">Hex</option>
+              <option value="url">URL</option>
+            </select>
+          </div>
+        </div>
+        <button
+          className={`footer-button ${value ? "" : "disabled"}`}
+          onClick={handleRun}
+        >
+          Run
+        </button>
+      </div>
+    );
+  };
+
+  const handleCopy = () => {
+    if (value) {
+      navigator.clipboard.writeText(value);
+    }
+  };
+
+  const handleClear = () => {
+    if (value) {
+      setValue("");
+    }
+  };
+
+  const renderCopyClearButtons = () => {
+    return (
+      <div className="copy-clear-buttons">
+        <button
+          className={`copy-clear-button ${value ? "" : "disabled"}`}
+          onClick={handleCopy}
+        >
+          Copy
+        </button>
+        <button
+          className={`copy-clear-button ${value ? "" : "disabled"}`}
+          onClick={handleClear}
+        >
+          Clear
+        </button>
+      </div>
+    );
+  };
+
+  return (
+    <div>
+      {!showJsonFormat && renderOperationButtons()}
+      {!showJsonFormat && <hr className="footer-hr" />}
+      {renderCopyClearButtons()}
+    </div>
+  );
 };
 
 export default Footer;
