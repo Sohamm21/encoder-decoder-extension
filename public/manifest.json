@@ -1,11 +1,16 @@
 {
-  "name": "Encoder-Decoder-Extension",
-  "description": "Encoder-Decoder-Extension",
+  "name": "Encode-Decode-Craft",
+  "description": "A developer utility tool for quickly encoding, decoding, and formatting strings. Paste or load text into a single workspace and transform it using Base64, URL, JSON escape/unescape, and other formats. Supports prettifying valid JSON, copying results, and working directly with clipboard content.",
   "version": "1.0",
   "manifest_version": 3,
   "action": {
     "default_popup": "index.html",
-    "default_title": "Encoder Decoder"
+    "default_title": "Encode-Decode-Craft"
   },
-  "permissions": ["clipboardRead", "storage", "activeTab", "clipboardWrite"]
+  "permissions": ["clipboardRead", "storage", "activeTab", "clipboardWrite"],
+  "icons": {
+    "16": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
+  }
 }

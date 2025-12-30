@@ -5,13 +5,13 @@ const Header = () => {
   return (
     <div className="header">
       <img
-        src="https://res.cloudinary.com/dyrv985gb/image/upload/v1767063951/encoder-decoder/code-solid-full_euldig.svg"
+        src="https://res.cloudinary.com/dyrv985gb/image/upload/v1767114288/encoder-decoder/Gemini_Generated_Image_zop6xzop6xzop6xz_eosjsj.png"
         className="header-icon"
         loading="lazy"
       />
       <div className="header-text">
-        <span>Encoder Decoder Transformer</span>
-        <span>Utility Tool</span>
+        <span className="medium-font">EncodeDecode Craft</span>
+        <span className="guide-text">Utility Tool</span>
       </div>
     </div>
   );

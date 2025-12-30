@@ -16,10 +16,10 @@
 }
 
 .header-icon {
-  background: radial-gradient(circle, #57c796 0%, #5360ed 100%);
-  width: 20px;
-  border-radius: 10px;
-  padding: 10px;
+  /* background: radial-gradient(circle, #57c796 0%, #5360ed 100%); */
+  width: 40px;
+  border: 1px solid #80808080;
+  border-radius: 15px;
 }
 
 .body {
@@ -81,6 +81,7 @@
   border: 1px solid #80808080;
   border-radius: 10px;
   width: 100%;
+  font-weight: bolder;
 }
 
 .footer-button.disabled {
