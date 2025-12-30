@@ -1,6 +1,6 @@
 {
   "name": "Encode-Decode-Craft",
-  "description": "A developer utility tool for quickly encoding, decoding, and formatting strings. Paste or load text into a single workspace and transform it using Base64, URL, JSON escape/unescape, and other formats. Supports prettifying valid JSON, copying results, and working directly with clipboard content.",
+  "description": "A developer utility tool for quickly encoding, decoding, and formatting strings.",
   "version": "1.0",
   "manifest_version": 3,
   "action": {
