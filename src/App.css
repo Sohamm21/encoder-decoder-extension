@@ -1,0 +1,13 @@
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(13, 10, 44);
+}

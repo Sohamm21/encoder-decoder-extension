@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  background: linear-gradient(90deg, #29135c 0%, #132146 48%);
+  border-bottom: 1px solid #80808080;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-icon {
+  background: radial-gradient(circle, #57c796 0%, #5360ed 100%);
+  width: 20px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.body {
+  padding: 10px;
+}
+
+.body-input-editor {
+  padding: 10px;
+  background-color: #132146;
+  border: 1px solid #80808080;
+  border-radius: 10px;
+}
