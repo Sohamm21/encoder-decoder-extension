@@ -1,11 +1,11 @@
 {
-  "name": "Encode-Decode-Craft",
+  "name": "EncodeDecode Craft",
   "description": "A developer utility tool for quickly encoding, decoding, and formatting strings.",
-  "version": "1.0",
+  "version": "1.1",
   "manifest_version": 3,
   "action": {
     "default_popup": "index.html",
-    "default_title": "Encode-Decode-Craft"
+    "default_title": "EncodeDecode Craft"
   },
   "permissions": ["clipboardRead", "storage", "activeTab", "clipboardWrite"],
   "icons": {
