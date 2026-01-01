@@ -4,7 +4,7 @@ import "./index.css";
 
 const Footer = ({ value, setValue, showJsonFormat }) => {
   const [operation, setOperation] = useState("encode");
-  const [format, setFormat] = useState("base64");
+  const [format, setFormat] = useState("url");
 
   const handleOperationChange = (e) => {
     setOperation(e.target.value);
@@ -57,8 +57,8 @@ const Footer = ({ value, setValue, showJsonFormat }) => {
           <div className="operation-container">
             <span>Format</span>
             <select onChange={handleFormatChange} className="dropdown">
-              <option value="base64">Base64</option>
               <option value="url">URL</option>
+              <option value="base64">Base64</option>
             </select>
           </div>
         </div>

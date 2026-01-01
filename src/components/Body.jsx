@@ -69,6 +69,7 @@ const Body = ({
         value={value}
         height="400px"
         width="100%"
+        maxWidth="100%"
         minWidth="100%"
         extensions={[json()]}
         basicSetup={true}
