@@ -7,7 +7,6 @@
   border-bottom: 1px solid #80808080;
   width: 100%;
   box-sizing: border-box;
-  min-width: 100vw;
 }
 
 .header-text {
@@ -128,7 +127,9 @@
   border: 1px solid #80808080;
   border-radius: 10px;
   background: linear-gradient(90deg, #29135c 0%, #132146 48%);
-  width: 200px;
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
 }
 
 .dropdown:focus {

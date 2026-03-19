@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { json } from "@codemirror/lang-json";
 
@@ -23,6 +23,14 @@ const Body = ({
     }
   };
 
+  useEffect(() => {
+    if (isJsonFormat) {
+      setShowJsonFormat(true);
+      handleFormat();
+    }
+  }, [isJsonFormat]);
+
+
   const renderBodyHeader = () => {
     const shouldShowToggle = isJsonFormat || showJsonFormat;
 
@@ -44,7 +52,7 @@ const Body = ({
               onClick={() => setShowJsonFormat(!showJsonFormat)}
               className="body-header-button"
             >
-              {showJsonFormat ? "Show Text" : "Show JSON"}
+              {showJsonFormat ? "Show Text / Operations" : "Show JSON"}
             </button>
           )}
         </div>

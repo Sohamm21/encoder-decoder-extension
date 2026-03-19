@@ -1,10 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./index.css";
 
+const XOR_KEY = 150;
+
+const xorEncrypt = (data) => {
+  const jsonStr = JSON.stringify(data);
+  const encrypted = new Uint8Array(jsonStr.length);
+  for (let i = 0; i < jsonStr.length; i++) {
+    encrypted[i] = jsonStr.charCodeAt(i) ^ XOR_KEY;
+  }
+  return btoa(String.fromCharCode(...encrypted));
+};
+
+const xorDecrypt = (base64) => {
+  const binary = atob(base64);
+  let decryptedStr = '';
+  for (let i = 0; i < binary.length; i++) {
+    decryptedStr += String.fromCharCode(binary.charCodeAt(i) ^ XOR_KEY);
+  }
+  return decryptedStr;
+};
+
 const Footer = ({ value, setValue, showJsonFormat }) => {
-  const [operation, setOperation] = useState("encode");
-  const [format, setFormat] = useState("url");
+  const [operation, setOperation] = useState(() => {
+    return localStorage.getItem("operation") || "decode";
+  });
+  const [format, setFormat] = useState(() => {
+    return localStorage.getItem("format") || "url";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("operation", operation);
+  }, [operation]);
+
+  useEffect(() => {
+    localStorage.setItem("format", format);
+  }, [format]);
 
   const handleOperationChange = (e) => {
     setOperation(e.target.value);
@@ -26,6 +58,14 @@ const Footer = ({ value, setValue, showJsonFormat }) => {
         case "url":
           setValue(encodeURIComponent(value));
           break;
+        case "xor":
+          try {
+            const parsed = JSON.parse(value);
+            setValue(xorEncrypt(parsed));
+          } catch {
+            alert("Invalid JSON input for XOR encryption");
+          }
+          break;
         default:
           break;
       }
@@ -36,6 +76,19 @@ const Footer = ({ value, setValue, showJsonFormat }) => {
           break;
         case "url":
           setValue(decodeURIComponent(value));
+          break;
+        case "xor":
+          try {
+            const decrypted = xorDecrypt(value);
+            let parsed = JSON.parse(decrypted);
+            // Unwrap if result is still a string (double-stringified JSON)
+            if (typeof parsed === 'string') {
+              parsed = JSON.parse(parsed);
+            }
+            setValue(JSON.stringify(parsed, null, 2));
+          } catch {
+            alert("Invalid encrypted input for XOR decryption");
+          }
           break;
         default:
           break;
@@ -49,16 +102,17 @@ const Footer = ({ value, setValue, showJsonFormat }) => {
         <div className="footer-buttons">
           <div className="operation-container">
             <span>Operation</span>
-            <select onChange={handleOperationChange} className="dropdown">
-              <option value="encode">Encode</option>
+            <select value={operation} onChange={handleOperationChange} className="dropdown">
               <option value="decode">Decode</option>
+              <option value="encode">Encode</option>
             </select>
           </div>
           <div className="operation-container">
             <span>Format</span>
-            <select onChange={handleFormatChange} className="dropdown">
+            <select value={format} onChange={handleFormatChange} className="dropdown">
               <option value="url">URL</option>
               <option value="base64">Base64</option>
+              <option value="xor">XOR</option>
             </select>
           </div>
         </div>
