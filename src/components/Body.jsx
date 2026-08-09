@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import CodeMirror from "@uiw/react-codemirror";
-import { json } from "@codemirror/lang-json";
+import React, { Suspense, lazy, useEffect } from "react";
 
 import "./index.css";
+
+const JsonEditor = lazy(() => import("./JsonEditor"));
 
 const Body = ({
   value,
@@ -73,24 +73,9 @@ const Body = ({
 
   const renderBodyInputJson = () => {
     return (
-      <CodeMirror
-        value={value}
-        height="400px"
-        width="100%"
-        maxWidth="100%"
-        minWidth="100%"
-        extensions={[json()]}
-        basicSetup={true}
-        theme="dark"
-        className="json-editor"
-        onChange={(val) => {
-          try {
-            setValue(val);
-          } catch {
-            // ignore until JSON becomes valid
-          }
-        }}
-      />
+      <Suspense fallback={<div className="json-editor json-editor-loading" />}>
+        <JsonEditor value={value} onChange={setValue} />
+      </Suspense>
     );
   };
 

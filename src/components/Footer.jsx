@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaRegCopy, FaRegTrashCan } from "react-icons/fa6";
 
 import "./index.css";
 
@@ -37,14 +38,6 @@ const Footer = ({ value, setValue, showJsonFormat }) => {
   useEffect(() => {
     localStorage.setItem("format", format);
   }, [format]);
-
-  const handleOperationChange = (e) => {
-    setOperation(e.target.value);
-  };
-
-  const handleFormatChange = (e) => {
-    setFormat(e.target.value);
-  };
 
   const handleRun = () => {
     if (!value) {
@@ -96,24 +89,51 @@ const Footer = ({ value, setValue, showJsonFormat }) => {
     }
   };
 
+  const renderSegmented = (options, activeValue, onSelect) => {
+    return (
+      <div className="segmented" role="tablist">
+        {options.map(({ value: optionValue, label }) => (
+          <button
+            key={optionValue}
+            type="button"
+            role="tab"
+            aria-selected={activeValue === optionValue}
+            className={`segmented-option ${activeValue === optionValue ? "active" : ""}`}
+            onClick={() => onSelect(optionValue)}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+    );
+  };
+
   const renderOperationButtons = () => {
     return (
-      <div className="footer">
+      <>
         <div className="footer-buttons">
           <div className="operation-container">
             <span>Operation</span>
-            <select value={operation} onChange={handleOperationChange} className="dropdown">
-              <option value="decode">Decode</option>
-              <option value="encode">Encode</option>
-            </select>
+            {renderSegmented(
+              [
+                { value: "decode", label: "Decode" },
+                { value: "encode", label: "Encode" },
+              ],
+              operation,
+              setOperation
+            )}
           </div>
           <div className="operation-container">
             <span>Format</span>
-            <select value={format} onChange={handleFormatChange} className="dropdown">
-              <option value="url">URL</option>
-              <option value="base64">Base64</option>
-              <option value="xor">XOR</option>
-            </select>
+            {renderSegmented(
+              [
+                { value: "url", label: "URL" },
+                { value: "base64", label: "Base64" },
+                { value: "xor", label: "XOR" },
+              ],
+              format,
+              setFormat
+            )}
           </div>
         </div>
         <button
@@ -122,7 +142,7 @@ const Footer = ({ value, setValue, showJsonFormat }) => {
         >
           Run
         </button>
-      </div>
+      </>
     );
   };
 
@@ -142,23 +162,27 @@ const Footer = ({ value, setValue, showJsonFormat }) => {
     return (
       <div className="copy-clear-buttons">
         <button
-          className={`copy-clear-button ${value ? "" : "disabled"}`}
+          className={`icon-button ${value ? "" : "disabled"}`}
           onClick={handleCopy}
+          title="Copy"
+          aria-label="Copy"
         >
-          Copy
+          <FaRegCopy />
         </button>
         <button
-          className={`copy-clear-button ${value ? "" : "disabled"}`}
+          className={`icon-button icon-button-danger ${value ? "" : "disabled"}`}
           onClick={handleClear}
+          title="Clear"
+          aria-label="Clear"
         >
-          Clear
+          <FaRegTrashCan />
         </button>
       </div>
     );
   };
 
   return (
-    <div>
+    <div className="footer">
       {!showJsonFormat && renderOperationButtons()}
       {!showJsonFormat && <hr className="footer-hr" />}
       {renderCopyClearButtons()}
