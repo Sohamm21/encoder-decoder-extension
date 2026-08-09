@@ -1,6 +1,6 @@
-# Encode-Decode-Craft
+# DataCraft
 
-**Encode-Decode-Craft** is a powerful and aesthetic Chrome Extension designed for developers. It serves as a comprehensive utility tool for quickly encoding, decoding, and formatting strings directly from your browser.
+**DataCraft** is a powerful and aesthetic Chrome Extension designed for developers. It serves as a comprehensive utility tool for quickly encoding, decoding, and formatting strings directly from your browser.
 
 With seamless clipboard integration and a modern dark-mode interface, it simplifies tasks like inspecting JSON responses, decoding Base64 strings, or URL-encoding parameters.
 
@@ -68,13 +68,13 @@ To use this extension in your Chrome (or Chromium-based) browser, follow these s
 2.  Enable **Developer mode** (toggle switch in the top right corner).
 3.  Click on the **Load unpacked** button (top left).
 4.  Select the **`dist`** folder generated in the previous step.
-5.  The **Encode-Decode-Craft** extension should now appear in your list and browser toolbar!
+5.  The **DataCraft** extension should now appear in your list and browser toolbar!
 
 ---
 
 ## 📖 How to Use
 
-1.  **Open the Extension**: Click the Encode-Decode-Craft icon in your browser toolbar.
+1.  **Open the Extension**: Click the DataCraft icon in your browser toolbar.
 2.  **Input Data**:
     - If you have text in your clipboard, it will appear automatically.
     - Otherwise, type or paste text into the input area.

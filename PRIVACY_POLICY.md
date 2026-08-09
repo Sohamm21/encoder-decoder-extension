@@ -1,10 +1,10 @@
-# Privacy Policy for Encode-Decode-Craft
+# Privacy Policy for DataCraft
 
 **Last Updated:** December 30, 2025
 
-**Encode-Decode-Craft** ("we", "our", or "us") is dedicated to protecting your privacy. This Privacy Policy outlines how our Chrome Extension functions and handles data.
+**DataCraft** ("we", "our", or "us") is dedicated to protecting your privacy. This Privacy Policy outlines how our Chrome Extension functions and handles data.
 
-By using Encode-Decode-Craft, you agree to the practices described in this policy.
+By using DataCraft, you agree to the practices described in this policy.
 
 ## 1. Data Collection and Usage
 
@@ -32,12 +32,11 @@ We request the minimum permissions necessary for the extension to function:
 
 ## 3. Third-Party Services
 
-This extension may load static resources (fonts or images) from the following third-party content delivery networks (CDNs):
+This extension loads one static resource from a third-party content delivery network (CDN):
 
 - **Google Fonts**: Used for typography.
-- **Cloudinary**: Used to host the extension logo/icon.
 
-These services may collect standard web log information (like IP addresses) for security and performance purposes, governed by their respective privacy policies. We do not share any user content with them.
+The extension logo/icon is bundled locally and is not loaded from any external host. Google Fonts may collect standard web log information (like IP addresses) for security and performance purposes, governed by its privacy policy. We do not share any user content with it.
 
 ## 4. Changes to This Policy
 

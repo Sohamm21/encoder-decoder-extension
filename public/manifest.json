@@ -1,11 +1,11 @@
 {
-  "name": "EncodeDecode Craft",
-  "description": "A developer utility tool for quickly encoding, decoding, and formatting strings.",
-  "version": "1.3",
+  "name": "DataCraft",
+  "description": "A developer utility tool for quickly encoding, decoding, formatting, and converting data.",
+  "version": "1.4",
   "manifest_version": 3,
   "action": {
     "default_popup": "index.html",
-    "default_title": "EncodeDecode Craft"
+    "default_title": "DataCraft"
   },
   "permissions": ["clipboardRead", "storage", "activeTab", "clipboardWrite"],
   "icons": {

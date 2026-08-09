@@ -6,7 +6,7 @@ const Header = () => {
     <div className="header">
       <img src="/logo.png" className="header-icon" loading="lazy" />
       <div className="header-text">
-        <span className="medium-font">EncodeDecode Craft</span>
+        <span className="medium-font">DataCraft</span>
         <span className="guide-text">Utility Tool</span>
       </div>
     </div>
