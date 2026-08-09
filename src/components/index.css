@@ -140,6 +140,36 @@
   box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.16);
 }
 
+.body-input {
+  width: 100%;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  display: block;
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-family: "SFMono-Regular", "Consolas", "Menlo", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.body-input::placeholder {
+  color: var(--color-text-faint);
+}
+
+.body-input:focus {
+  outline: none;
+  border-color: var(--accent-1);
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.16);
+}
+
+.body-input[readonly] {
+  cursor: default;
+}
+
 .json-editor {
   width: 100%;
   flex: 1;
@@ -196,6 +226,11 @@
   color: var(--color-text-muted);
 }
 
+.operation-container-muted {
+  opacity: 0.5;
+  transition: opacity var(--transition-fast);
+}
+
 /* Segmented control (replaces <select> dropdowns) */
 
 .segmented {
@@ -236,6 +271,91 @@
 .segmented-option:focus-visible {
   outline: 2px solid var(--accent-1);
   outline-offset: 2px;
+}
+
+/* Searchable combobox, used where the option list is too long for a segmented control */
+
+.searchable-select {
+  position: relative;
+  width: 100%;
+}
+
+.searchable-select-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.searchable-select-input:hover {
+  border-color: var(--color-border-strong);
+}
+
+.searchable-select-input:disabled {
+  cursor: not-allowed;
+  color: var(--color-text-muted);
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  opacity: 1;
+}
+
+.searchable-select-input:disabled:hover {
+  border-color: var(--color-border);
+}
+
+.searchable-select-input:focus {
+  outline: none;
+  border-color: var(--accent-1);
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.16);
+  cursor: text;
+}
+
+.searchable-select-list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% + 6px);
+  max-height: 200px;
+  overflow-y: auto;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 4px;
+  z-index: 20;
+}
+
+.searchable-select-option {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  color: var(--color-text);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.searchable-select-option:hover,
+.searchable-select-option.active {
+  background: var(--color-surface-hover);
+  color: var(--accent-2);
+}
+
+.searchable-select-empty {
+  padding: 8px 10px;
+  font-size: 13px;
+  color: var(--color-text-muted);
 }
 
 .footer-button {
