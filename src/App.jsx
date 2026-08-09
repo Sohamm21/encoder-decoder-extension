@@ -1,10 +1,17 @@
-import { useEffect, useMemo, useState } from "react";
-import { Header, Body, Footer } from "./components";
+import { useEffect, useState } from "react";
+import { Header, Tabs, CopyClearBar } from "./components";
+import { getTab, DEFAULT_TAB } from "./tabs";
 import "./App.css";
 
 function App() {
   const [value, setValue] = useState("");
-  const [showJsonFormat, setShowJsonFormat] = useState(false);
+  const [activeTab, setActiveTab] = useState(() => {
+    return localStorage.getItem("activeTab") || DEFAULT_TAB;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("activeTab", activeTab);
+  }, [activeTab]);
 
   useEffect(() => {
     const readClipboard = async () => {
@@ -23,31 +30,14 @@ function App() {
     readClipboard();
   }, []);
 
-  const isJsonFormat = useMemo(() => {
-    if (!value || typeof value !== "string") return false;
-    try {
-      JSON.parse(value);
-      return true;
-    } catch {
-      return false;
-    }
-  }, [value]);
+  const { Panel: ActivePanel } = getTab(activeTab);
 
   return (
     <div className="container">
       <Header />
-      <Body
-        value={value}
-        setValue={setValue}
-        isJsonFormat={isJsonFormat}
-        showJsonFormat={showJsonFormat}
-        setShowJsonFormat={setShowJsonFormat}
-      />
-      <Footer
-        value={value}
-        setValue={setValue}
-        showJsonFormat={showJsonFormat}
-      />
+      <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
+      <ActivePanel value={value} setValue={setValue} />
+      <CopyClearBar value={value} setValue={setValue} />
     </div>
   );
 }
