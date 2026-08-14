@@ -1,5 +1,6 @@
 import EncodeDecodePanel from "./components/EncodeDecodePanel";
 import DateConverterPanel from "./components/DateConverterPanel";
+import ImageGeneratorPanel from "./components/ImageGeneratorPanel";
 
 export const TABS = [
   {
@@ -11,6 +12,12 @@ export const TABS = [
     id: "date",
     label: "Date Converter",
     Panel: DateConverterPanel,
+  },
+  {
+    id: "image",
+    label: "Image Generator",
+    Panel: ImageGeneratorPanel,
+    hideCopyClear: true,
   },
 ];
 

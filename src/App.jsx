@@ -13,14 +13,14 @@ function App() {
     localStorage.setItem("activeTab", activeTab);
   }, [activeTab]);
 
-  const { Panel: ActivePanel } = getTab(activeTab);
+  const { Panel: ActivePanel, hideCopyClear } = getTab(activeTab);
 
   return (
     <div className="container">
       <Header />
       <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
       <ActivePanel value={value} setValue={setValue} />
-      <CopyClearBar value={value} setValue={setValue} />
+      {!hideCopyClear && <CopyClearBar value={value} setValue={setValue} />}
     </div>
   );
 }
