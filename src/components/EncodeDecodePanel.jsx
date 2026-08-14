@@ -14,7 +14,6 @@ const OPERATION_OPTIONS = [
 const FORMAT_OPTIONS = [
   { value: "url", label: "URL" },
   { value: "base64", label: "Base64" },
-  { value: "xor", label: "XOR" },
 ];
 
 const EncodeDecodePanel = ({ value, setValue }) => {
@@ -33,6 +32,22 @@ const EncodeDecodePanel = ({ value, setValue }) => {
   useEffect(() => {
     localStorage.setItem("format", format);
   }, [format]);
+
+  useEffect(() => {
+    const readClipboard = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      try {
+        const text = await navigator.clipboard.readText();
+        if (text && text.trim().length > 0) {
+          setValue(text);
+        }
+      } catch (error) {
+        console.error("Failed to read clipboard:", error);
+      }
+    };
+
+    readClipboard();
+  }, []);
 
   const isJsonFormat = useMemo(() => {
     if (!value || typeof value !== "string") return false;

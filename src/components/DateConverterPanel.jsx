@@ -36,6 +36,26 @@ const DateConverterPanel = ({ value, setValue }) => {
     localStorage.setItem("dateToZone", toZone);
   }, [toZone]);
 
+  useEffect(() => {
+    const checkClipboard = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      try {
+        const text = await navigator.clipboard.readText();
+        const clipboardTrimmed = text.trim();
+
+        if (clipboardTrimmed && parseEpochOrDate(clipboardTrimmed) !== null) {
+          setValue(text);
+        } else {
+          setValue("");
+        }
+      } catch (error) {
+        console.error("Failed to read clipboard:", error);
+      }
+    };
+
+    checkClipboard();
+  }, []);
+
   const trimmed = value.trim();
   const fromZoneIgnored = trimmed.length > 0 && (isEpoch(trimmed) || hasExplicitTimeZone(trimmed));
 

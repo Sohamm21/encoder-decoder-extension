@@ -13,23 +13,6 @@ function App() {
     localStorage.setItem("activeTab", activeTab);
   }, [activeTab]);
 
-  useEffect(() => {
-    const readClipboard = async () => {
-      await new Promise((resolve) => setTimeout(resolve, 100));
-      try {
-        const text = await navigator.clipboard.readText();
-
-        if (text && text.trim().length > 0) {
-          setValue(text);
-        }
-      } catch (error) {
-        console.error("Failed to read clipboard:", error);
-      }
-    };
-
-    readClipboard();
-  }, []);
-
   const { Panel: ActivePanel } = getTab(activeTab);
 
   return (
