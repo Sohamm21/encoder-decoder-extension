@@ -1,7 +1,7 @@
 {
   "name": "DataCraft",
-  "description": "A developer utility tool for quickly encoding, decoding, formatting, and converting data.",
-  "version": "1.4",
+  "description": "A developer utility tool for encoding, decoding, formatting data, converting dates and timestamps, and generating or converting placeholder images.",
+  "version": "1.5",
   "manifest_version": 3,
   "action": {
     "default_popup": "index.html",
