@@ -1,13 +1,16 @@
 {
   "name": "DataCraft",
   "description": "A developer toolkit for encoding, decoding, formatting data, date/timezone conversion, and image generation.",
-  "version": "1.5",
+  "version": "1.6",
   "manifest_version": 3,
   "action": {
     "default_popup": "index.html",
     "default_title": "DataCraft"
   },
-  "permissions": ["clipboardRead", "storage", "activeTab", "clipboardWrite"],
+  "permissions": [
+    "clipboardRead",
+    "clipboardWrite"
+  ],
   "icons": {
     "16": "logo.png",
     "48": "logo.png",
